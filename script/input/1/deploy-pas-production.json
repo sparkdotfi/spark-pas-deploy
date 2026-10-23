@@ -1,0 +1,15 @@
+{
+  "_info": "Spark PAS Mainnet deployment.",
+
+  "chainId": 1,
+
+  "owner": "0x1804c8AB1F12E6bbf3894d4083f33e07309d1f38",
+  "minDelay": 259200,
+  "coreCouncil": "0x1804c8AB1F12E6bbf3894d4083f33e07309d1f38",
+  "cancellers": [
+    "0x1804c8AB1F12E6bbf3894d4083f33e07309d1f38"
+  ],
+  "pausers": [
+      "0x1804c8AB1F12E6bbf3894d4083f33e07309d1f38"
+    ]
+}

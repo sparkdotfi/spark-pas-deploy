@@ -1,4 +1,7 @@
 {
+  "lib/dss-test": {
+    "rev": "6978eea94573fda10309b4751c9c7643e27248f6"
+  },
   "lib/forge-std": {
     "tag": {
       "name": "v1.17.0",
