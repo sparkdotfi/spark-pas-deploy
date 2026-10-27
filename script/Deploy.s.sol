@@ -1,15 +1,13 @@
 // SPDX-License-Identifier: AGPL-3.0-or-later
 pragma solidity ^0.8.34;
 
-import { console2 }        from "lib/forge-std/src/console2.sol";
 import { Script, stdJson } from "lib/forge-std/src/Script.sol";
 
 import { ScriptTools } from "lib/dss-test/src/ScriptTools.sol";
 
-import { PASDeploy, PASInstance } from "lib/pas/deploy/PASDeploy.sol";
-import { PASInit }                from "lib/pas/deploy/PASInit.sol";
+import { DeployPASBase, PASInstance } from "deploy/Deploy.sol";
 
-contract DeployPAS is Script {
+contract DeployPAS is DeployPASBase, Script {
 
     using stdJson     for string;
     using ScriptTools for string;
@@ -31,19 +29,15 @@ contract DeployPAS is Script {
 
         vm.startBroadcast();
 
-        PASInstance memory pas = PASDeploy.deploy({
-            deployer : msg.sender,
-            owner    : msg.sender,
-            minDelay : config.readUint(".minDelay")
-        });
+        ( , address deployer, ) = vm.readCallers();
 
-        PASInit.init({
-            pasInstance : pas,
+        PASInstance memory pas = _deployAndConfigurePAS(deployer, Config({
+            owner       : config.readAddress(".owner"),
             minDelay    : config.readUint(".minDelay"),
             coreCouncil : config.readAddress(".coreCouncil"),
             cancellers  : config.readAddressArray(".cancellers"),
             pausers     : config.readAddressArray(".pausers")
-        });
+        }));
 
         vm.stopBroadcast();
 
