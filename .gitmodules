@@ -6,4 +6,4 @@
 	url = https://github.com/makerdao/dss-test
 [submodule "lib/pas"]
 	path = lib/pas
-	url = git@github.com:sky-ecosystem/pas
+	url = https://github.com/sky-ecosystem/pas
