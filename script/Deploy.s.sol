@@ -31,7 +31,7 @@ contract DeployPAS is DeployPASBase, Script {
 
         ( , address deployer, ) = vm.readCallers();
 
-        PASInstance memory pas = _deployAndConfigurePAS(deployer, Config({
+        PASInstance memory pas = _deployAndConfigurePAS(deployer, PASConfig({
             owner       : config.readAddress(".owner"),
             minDelay    : config.readUint(".minDelay"),
             coreCouncil : config.readAddress(".coreCouncil"),

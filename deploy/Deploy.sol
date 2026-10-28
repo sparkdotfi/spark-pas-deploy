@@ -18,7 +18,7 @@ interface ITimelockLike {
 
 contract DeployPASBase {
 
-    struct Config {
+    struct PASConfig {
         address   owner;
         uint256   minDelay;
         address   coreCouncil;
@@ -26,7 +26,7 @@ contract DeployPASBase {
         address[] pausers;
     }
 
-    function _deployAndConfigurePAS(address deployer, Config memory cfg) internal returns (PASInstance memory pas) {
+    function _deployAndConfigurePAS(address deployer, PASConfig memory cfg) internal returns (PASInstance memory pas) {
         pas = PASDeploy.deploy({
             deployer : deployer,
             owner    : deployer,
