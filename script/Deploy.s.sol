@@ -31,13 +31,15 @@ contract DeployPAS is DeployPASBase, Script {
 
         ( , address deployer, ) = vm.readCallers();
 
-        PASInstance memory pas = _deployAndConfigurePAS(deployer, PASConfig({
+        require(config.readAddress(".owner") != deployer, "DeployPAS/Invalid owner");
+
+        PASInstance memory pas = _deployAndConfigurePAS(PASConfig({
             owner       : config.readAddress(".owner"),
             minDelay    : config.readUint(".minDelay"),
             coreCouncil : config.readAddress(".coreCouncil"),
             cancellers  : config.readAddressArray(".cancellers"),
             pausers     : config.readAddressArray(".pausers")
-        }));
+        }), deployer);
 
         vm.stopBroadcast();
 

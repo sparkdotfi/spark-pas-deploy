@@ -26,7 +26,7 @@ contract DeployPASBase {
         address[] pausers;
     }
 
-    function _deployAndConfigurePAS(address deployer, PASConfig memory cfg) internal returns (PASInstance memory pas) {
+    function _deployAndConfigurePAS(PASConfig memory cfg, address deployer) internal returns (PASInstance memory pas) {
         pas = PASDeploy.deploy({
             deployer : deployer,
             owner    : deployer,
