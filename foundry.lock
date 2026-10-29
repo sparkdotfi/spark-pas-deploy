@@ -1,8 +1,14 @@
 {
+  "lib/dss-test": {
+    "rev": "6978eea94573fda10309b4751c9c7643e27248f6"
+  },
   "lib/forge-std": {
     "tag": {
       "name": "v1.17.0",
       "rev": "f3dae6e6ee381f25eb6a246f7da9b85c91a68219"
     }
+  },
+  "lib/pas": {
+    "rev": "6fa37f4c4d4e05c5e3b73abc94bc9cf96dea7f9e"
   }
 }
